@@ -85,10 +85,9 @@
                         </p>
 
                         <!-- Waitlist Form -->
-                        <form action="https://tally.so/r/FORM_ID" method="POST" target="_blank" id="waitlistForm" class="max-w-md mx-auto mb-6">
-                            <input type="hidden" name="redirect" value="https://postbet.xyz/thanks">
+                        <form action="YOUR_GOOGLE_FORM_URL" method="POST" target="_blank" id="waitlistForm" class="max-w-md mx-auto mb-6">
                             <div class="flex gap-2">
-                                <input name="email" type="email" placeholder="Enter your email" class="flex-grow px-4 py-3 rounded-lg bg-x-dark border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-x-blue" required>
+                                <input name="entry.XXXXX" type="email" placeholder="Enter your email" class="flex-grow px-4 py-3 rounded-lg bg-x-dark border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-x-blue" required>
                                 <button type="submit" class="px-6 py-3 bg-success hover:bg-success/90 text-white font-medium rounded-lg transition-colors">
                                     Join Waitlist
                                 </button>
@@ -199,10 +198,9 @@
                     <h2 class="text-3xl font-bold mb-8">Be the First to Predict</h2>
                     
                     <!-- Waitlist Form (Duplicated) -->
-                    <form action="https://tally.so/r/FORM_ID" method="POST" target="_blank" id="waitlistForm2" class="max-w-md mx-auto mb-8">
-                        <input type="hidden" name="redirect" value="https://postbet.xyz/thanks">
+                    <form action="YOUR_GOOGLE_FORM_URL" method="POST" target="_blank" id="waitlistForm2" class="max-w-md mx-auto mb-8">
                         <div class="flex gap-2">
-                            <input name="email" type="email" placeholder="Enter your email" class="flex-grow px-4 py-3 rounded-lg bg-x-dark border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-x-blue" required>
+                            <input name="entry.XXXXX" type="email" placeholder="Enter your email" class="flex-grow px-4 py-3 rounded-lg bg-x-dark border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-x-blue" required>
                             <button type="submit" class="px-6 py-3 bg-success hover:bg-success/90 text-white font-medium rounded-lg transition-colors">
                                 Join Waitlist
                             </button>
@@ -252,6 +250,34 @@
     </div>
 
     <script>
+        // Form submission handling
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = e.target.querySelector('input[type="email"]').value;
+                
+                try {
+                    // Submit to Google Form
+                    await fetch(form.action, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: new URLSearchParams({
+                            [e.target.querySelector('input[type="email"]').name]: email
+                        })
+                    });
+
+                    // Redirect to thanks page
+                    window.location.href = '/thanks';
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Something went wrong. Please try again.');
+                }
+            });
+        });
+
         // Fake counter animation
         let count = 2471;
         setInterval(() => {

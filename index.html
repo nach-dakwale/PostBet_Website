@@ -85,13 +85,14 @@
                         </p>
 
                         <!-- Waitlist Form -->
-                        <form action="YOUR_GOOGLE_FORM_URL" method="POST" target="_blank" id="waitlistForm" class="max-w-md mx-auto mb-6">
+                        <form action="https://tally.so/r/mRPXPq" method="POST" target="_blank" id="waitlistForm" class="max-w-md mx-auto mb-6">
                             <div class="flex gap-2">
-                                <input name="entry.XXXXX" type="email" placeholder="Enter your email" class="flex-grow px-4 py-3 rounded-lg bg-x-dark border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-x-blue" required>
+                                <input name="email" type="email" placeholder="Enter your email" class="flex-grow px-4 py-3 rounded-lg bg-x-dark border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-x-blue" required>
                                 <button type="submit" class="px-6 py-3 bg-success hover:bg-success/90 text-white font-medium rounded-lg transition-colors">
                                     Join Waitlist
                                 </button>
                             </div>
+                            <input type="hidden" name="_redirect" value="https://postbet.xyz/thanks">
                         </form>
                         <p class="text-gray-400 text-sm">🔥 <span class="text-success font-medium">47 people</span> joined in the last hour</p>
                     </div>
@@ -198,13 +199,14 @@
                     <h2 class="text-3xl font-bold mb-8">Be the First to Predict</h2>
                     
                     <!-- Waitlist Form (Duplicated) -->
-                    <form action="YOUR_GOOGLE_FORM_URL" method="POST" target="_blank" id="waitlistForm2" class="max-w-md mx-auto mb-8">
+                    <form action="https://tally.so/r/mRPXPq" method="POST" target="_blank" id="waitlistForm2" class="max-w-md mx-auto mb-8">
                         <div class="flex gap-2">
-                            <input name="entry.XXXXX" type="email" placeholder="Enter your email" class="flex-grow px-4 py-3 rounded-lg bg-x-dark border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-x-blue" required>
+                            <input name="email" type="email" placeholder="Enter your email" class="flex-grow px-4 py-3 rounded-lg bg-x-dark border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-x-blue" required>
                             <button type="submit" class="px-6 py-3 bg-success hover:bg-success/90 text-white font-medium rounded-lg transition-colors">
                                 Join Waitlist
                             </button>
                         </div>
+                        <input type="hidden" name="_redirect" value="https://postbet.xyz/thanks">
                     </form>
 
                     <!-- Share Buttons -->
@@ -250,35 +252,7 @@
     </div>
 
     <script>
-        // Form submission handling
-        document.querySelectorAll('form').forEach(form => {
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const email = e.target.querySelector('input[type="email"]').value;
-                
-                try {
-                    // Submit to Google Form
-                    await fetch(form.action, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                        },
-                        body: new URLSearchParams({
-                            [e.target.querySelector('input[type="email"]').name]: email
-                        })
-                    });
-
-                    // Redirect to thanks page
-                    window.location.href = '/thanks';
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('Something went wrong. Please try again.');
-                }
-            });
-        });
-
-        // Fake counter animation
+        // Simplified counter animation (removed form handling since Tally handles it)
         let count = 2471;
         setInterval(() => {
             if (Math.random() > 0.7) {

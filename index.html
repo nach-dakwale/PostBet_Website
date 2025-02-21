@@ -85,9 +85,10 @@
                         </p>
 
                         <!-- Waitlist Form -->
-                        <form id="waitlistForm" class="max-w-md mx-auto mb-6">
+                        <form action="https://tally.so/r/FORM_ID" method="POST" target="_blank" id="waitlistForm" class="max-w-md mx-auto mb-6">
+                            <input type="hidden" name="redirect" value="https://postbet.xyz/thanks">
                             <div class="flex gap-2">
-                                <input type="email" placeholder="Enter your email" class="flex-grow px-4 py-3 rounded-lg bg-x-dark border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-x-blue">
+                                <input name="email" type="email" placeholder="Enter your email" class="flex-grow px-4 py-3 rounded-lg bg-x-dark border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-x-blue" required>
                                 <button type="submit" class="px-6 py-3 bg-success hover:bg-success/90 text-white font-medium rounded-lg transition-colors">
                                     Join Waitlist
                                 </button>
@@ -198,9 +199,10 @@
                     <h2 class="text-3xl font-bold mb-8">Be the First to Predict</h2>
                     
                     <!-- Waitlist Form (Duplicated) -->
-                    <form id="waitlistForm2" class="max-w-md mx-auto mb-8">
+                    <form action="https://tally.so/r/FORM_ID" method="POST" target="_blank" id="waitlistForm2" class="max-w-md mx-auto mb-8">
+                        <input type="hidden" name="redirect" value="https://postbet.xyz/thanks">
                         <div class="flex gap-2">
-                            <input type="email" placeholder="Enter your email" class="flex-grow px-4 py-3 rounded-lg bg-x-dark border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-x-blue">
+                            <input name="email" type="email" placeholder="Enter your email" class="flex-grow px-4 py-3 rounded-lg bg-x-dark border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-x-blue" required>
                             <button type="submit" class="px-6 py-3 bg-success hover:bg-success/90 text-white font-medium rounded-lg transition-colors">
                                 Join Waitlist
                             </button>
@@ -250,20 +252,6 @@
     </div>
 
     <script>
-        // Simple form validation
-        document.querySelectorAll('form').forEach(form => {
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const email = e.target.querySelector('input[type="email"]').value;
-                if (!email || !email.includes('@')) {
-                    alert('Please enter a valid email address');
-                    return;
-                }
-                // TODO: Add API integration
-                alert('Thanks for joining the waitlist! We\'ll be in touch soon.');
-            });
-        });
-
         // Fake counter animation
         let count = 2471;
         setInterval(() => {
@@ -274,5 +262,4 @@
         }, 3000);
     </script>
 </body>
-</html> 
 </html> 

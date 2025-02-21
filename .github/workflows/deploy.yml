@@ -27,6 +27,7 @@ jobs:
         run: |
           mkdir deploy
           cp index.html deploy/
+          cp thanks.html deploy/
           cp CNAME deploy/
       
       - name: Upload artifact

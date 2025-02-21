@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanks for Joining PostBet!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'x-blue': '#1DA1F2',
+                        'x-black': '#15202B',
+                        'x-dark': '#192734',
+                        'x-gray': '#657786',
+                        'success': '#00BA7C'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(45deg, #1DA1F2, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-x-black text-white font-inter">
+    <div class="min-h-screen flex flex-col items-center justify-center p-4">
+        <div class="text-center max-w-xl">
+            <div class="text-6xl mb-6">🎉</div>
+            <h1 class="text-4xl font-bold mb-4">Welcome to the <span class="gradient-text">PostBet</span> Waitlist!</h1>
+            <p class="text-xl text-gray-400 mb-8">
+                You're now on the list for early access. We'll notify you as soon as we launch!
+            </p>
+            
+            <!-- Share Section -->
+            <div class="bg-x-dark rounded-xl p-8 mb-8">
+                <h2 class="text-xl font-semibold mb-4">Share with friends</h2>
+                <div class="flex justify-center space-x-4">
+                    <a href="https://twitter.com/intent/tweet?text=Just%20joined%20the%20waitlist%20for%20%40PostBet%20-%20the%20first%20Chrome%20extension%20for%20betting%20on%20X%20predictions!%20Join%20me%3A%20https%3A%2F%2Fpostbet.xyz" target="_blank" class="p-3 bg-x-blue/10 rounded-full hover:bg-x-blue/20 transition-colors">
+                        <i class="fab fa-twitter text-x-blue"></i>
+                    </a>
+                    <a href="https://wa.me/?text=Just%20joined%20the%20waitlist%20for%20PostBet%20-%20the%20first%20Chrome%20extension%20for%20betting%20on%20X%20predictions!%20Join%20me%3A%20https%3A%2F%2Fpostbet.xyz" target="_blank" class="p-3 bg-green-500/10 rounded-full hover:bg-green-500/20 transition-colors">
+                        <i class="fab fa-whatsapp text-green-500"></i>
+                    </a>
+                    <a href="https://t.me/share/url?url=https%3A%2F%2Fpostbet.xyz&text=Just%20joined%20the%20waitlist%20for%20PostBet%20-%20the%20first%20Chrome%20extension%20for%20betting%20on%20X%20predictions!" target="_blank" class="p-3 bg-blue-500/10 rounded-full hover:bg-blue-500/20 transition-colors">
+                        <i class="fab fa-telegram text-blue-500"></i>
+                    </a>
+                </div>
+            </div>
+
+            <a href="/" class="text-gray-400 hover:text-white transition-colors">
+                ← Back to homepage
+            </a>
+        </div>
+    </div>
+</body>
+</html> 

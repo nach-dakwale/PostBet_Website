@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PostBet - Place Instant Bets on X Predictions</title>
+    <title>PostBet - Bet on X Predictions</title>
+    <meta name="description" content="Join the waitlist for PostBet - the first Chrome extension for betting on X predictions. Get early access and exclusive benefits.">
+    <meta property="og:title" content="PostBet - Bet on X Predictions">
+    <meta property="og:description" content="Join the waitlist for PostBet - the first Chrome extension for betting on X predictions. Get early access and exclusive benefits.">
+    <meta property="og:image" content="https://postbet.xyz/preview.jpg">
+    <meta property="og:url" content="https://postbet.xyz">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,9 +18,10 @@
                 extend: {
                     colors: {
                         'x-blue': '#1DA1F2',
-                        'x-black': '#14171A',
-                        'x-dark': '#1B1F23',
-                        'x-gray': '#657786'
+                        'x-black': '#15202B',
+                        'x-dark': '#192734',
+                        'x-gray': '#657786',
+                        'success': '#00BA7C'
                     },
                     fontFamily: {
                         'inter': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
@@ -26,258 +32,247 @@
     </script>
     <style>
         .gradient-bg {
-            background: linear-gradient(180deg, #14171A 0%, #1B1F23 100%);
+            background: linear-gradient(180deg, #15202B 0%, #192734 100%);
         }
         .gradient-text {
             background: linear-gradient(45deg, #1DA1F2, #ffffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        .mockup-hover {
+            transition: all 0.3s ease;
+        }
+        .mockup-hover:hover {
+            transform: scale(1.02);
         }
     </style>
 </head>
-<body class="bg-x-dark text-white font-inter">
-    <!-- Hero Section -->
-    <header class="min-h-screen flex flex-col">
-        <nav class="bg-x-black/50 backdrop-blur-md border-b border-gray-800">
+<body class="bg-x-black text-white font-inter">
+    <div class="min-h-screen flex flex-col">
+        <nav class="bg-x-dark/50 backdrop-blur-md border-b border-gray-800">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                 <div class="flex justify-between items-center">
                     <div class="flex items-center">
                         <span class="text-2xl font-bold gradient-text">PostBet</span>
                     </div>
                     <div class="flex items-center space-x-6">
-                        <a href="#markets" class="text-gray-300 hover:text-white">Live Markets</a>
-                        <a href="#how-it-works" class="text-gray-300 hover:text-white">How It Works</a>
-                        <a href="https://github.com/yourusername/postbet" target="_blank" class="text-gray-300 hover:text-white">
-                            <i class="fab fa-github text-xl"></i>
-                        </a>
+                        <div class="text-gray-400">
+                            <span class="font-semibold text-white" id="waitlistCount">2,471</span> people waiting
+                        </div>
                     </div>
                 </div>
             </div>
         </nav>
 
         <main class="flex-grow">
-            <!-- Hero Content -->
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-                <div class="text-center">
-                    <h1 class="text-5xl font-extrabold tracking-tight sm:text-6xl mb-8">
-                        Place Instant Bets on <span class="gradient-text">X Predictions</span>
-                    </h1>
-                    <p class="max-w-2xl mx-auto text-xl text-gray-400 mb-8">
-                        Join thousands of users betting on viral tweets, news, and predictions. No account needed - use your X login.
-                    </p>
-                    
-                    <!-- Live Stats -->
-                    <div class="stats-grid max-w-4xl mx-auto mb-12 p-6 bg-x-black/50 rounded-xl backdrop-blur">
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-x-blue">$1.2M+</div>
-                            <div class="text-gray-400">Total Volume</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-x-blue">50K+</div>
-                            <div class="text-gray-400">Active Users</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-x-blue">1,200+</div>
-                            <div class="text-gray-400">Active Markets</div>
-                        </div>
+            <!-- Hero Section -->
+            <section class="py-20">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto">
+                        <h1 class="text-5xl font-extrabold tracking-tight sm:text-6xl mb-8">
+                            Place Bets on Any <span class="gradient-text">X Prediction</span>
+                        </h1>
+                        <p class="text-xl text-gray-400 mb-12">
+                            Join the waitlist for early access to the first Chrome extension that lets you bet on any X post. Create markets, place bets, and earn rewards.
+                        </p>
+
+                        <!-- Waitlist Form -->
+                        <form id="waitlistForm" class="max-w-md mx-auto mb-6">
+                            <div class="flex gap-2">
+                                <input type="email" placeholder="Enter your email" class="flex-grow px-4 py-3 rounded-lg bg-x-dark border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-x-blue">
+                                <button type="submit" class="px-6 py-3 bg-success hover:bg-success/90 text-white font-medium rounded-lg transition-colors">
+                                    Join Waitlist
+                                </button>
+                            </div>
+                        </form>
+                        <p class="text-gray-400 text-sm">🔥 <span class="text-success font-medium">47 people</span> joined in the last hour</p>
                     </div>
 
-                    <div class="flex justify-center space-x-4">
-                        <a href="#" class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-black bg-white hover:bg-gray-100">
-                            <i class="fab fa-chrome mr-2"></i>
-                            Add to Chrome - Free
-                        </a>
-                        <a href="#markets" class="inline-flex items-center px-8 py-3 border border-x-blue text-base font-medium rounded-md text-white bg-transparent hover:bg-x-blue/10">
-                            <i class="fas fa-chart-line mr-2"></i>
-                            See Active Markets
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Preview Image -->
-                <div class="mt-20 relative">
-                    <div class="relative mx-auto max-w-4xl">
-                        <img src="https://placehold.co/1200x800" alt="PostBet Interface Preview" class="rounded-xl shadow-2xl border border-gray-800">
-                        <div class="absolute -bottom-8 -right-8 bg-x-blue/10 backdrop-blur p-4 rounded-xl border border-x-blue/50">
-                            <div class="flex items-center space-x-2">
-                                <i class="fas fa-check-circle text-x-blue text-xl"></i>
-                                <span class="font-medium text-white">Chrome Store Verified</span>
+                    <!-- Product Preview -->
+                    <div class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="relative mockup-hover">
+                            <img src="https://placehold.co/600x400" alt="Betting Interface" class="rounded-xl shadow-2xl border border-gray-800">
+                            <div class="absolute inset-0 bg-gradient-to-t from-x-black/80 to-transparent rounded-xl flex items-end p-6">
+                                <p class="text-lg font-medium">Bet on viral predictions</p>
+                            </div>
+                        </div>
+                        <div class="relative mockup-hover">
+                            <img src="https://placehold.co/600x400" alt="Market Creation" class="rounded-xl shadow-2xl border border-gray-800">
+                            <div class="absolute inset-0 bg-gradient-to-t from-x-black/80 to-transparent rounded-xl flex items-end p-6">
+                                <p class="text-lg font-medium">Create your own markets</p>
+                            </div>
+                        </div>
+                        <div class="relative mockup-hover lg:col-span-1 md:col-span-2 lg:col-span-1">
+                            <img src="https://placehold.co/600x400" alt="Winning Payout" class="rounded-xl shadow-2xl border border-gray-800">
+                            <div class="absolute inset-0 bg-gradient-to-t from-x-black/80 to-transparent rounded-xl flex items-end p-6">
+                                <p class="text-lg font-medium">Win when you're right</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- How It Works -->
-            <section id="how-it-works" class="py-20 bg-x-black">
+            <!-- Features -->
+            <section class="py-20 bg-x-dark">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-3xl font-bold text-center mb-16">How It Works</h2>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                         <div class="text-center">
                             <div class="bg-x-blue/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-x-blue/20">
-                                <span class="text-2xl font-bold text-x-blue">1</span>
+                                <i class="fas fa-chart-line text-x-blue text-2xl"></i>
                             </div>
-                            <h3 class="text-xl font-semibold mb-2">Install Extension</h3>
-                            <p class="text-gray-400">Add PostBet to Chrome in one click</p>
+                            <h3 class="text-xl font-semibold mb-2">Bet on Anything</h3>
+                            <p class="text-gray-400">Place bets on any X prediction or create your own markets</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-success/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-success/20">
+                                <i class="fas fa-money-bill-wave text-success text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">Earn Rewards</h3>
+                            <p class="text-gray-400">Get paid when you win & earn fees from your markets</p>
                         </div>
                         <div class="text-center">
                             <div class="bg-x-blue/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-x-blue/20">
-                                <span class="text-2xl font-bold text-x-blue">2</span>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-2">Browse X</h3>
-                            <p class="text-gray-400">See betting opportunities on any post</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="bg-x-blue/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-x-blue/20">
-                                <span class="text-2xl font-bold text-x-blue">3</span>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-2">Place Bets</h3>
-                            <p class="text-gray-400">Bet instantly with secure payments</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Live Markets -->
-            <section id="markets" class="py-20 bg-x-dark">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-3xl font-bold text-center mb-8">Live Markets</h2>
-                    <p class="text-center text-gray-400 mb-12">Browse current betting opportunities</p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <!-- Market Card -->
-                        <div class="bg-x-black rounded-xl p-6 border border-gray-800">
-                            <div class="flex items-start justify-between mb-4">
-                                <div>
-                                    <h3 class="font-semibold">Will BTC hit $100K in 2024?</h3>
-                                    <p class="text-gray-400 text-sm">by @cryptoanalyst</p>
-                                </div>
-                                <span class="text-x-blue text-sm">4h left</span>
-                            </div>
-                            <div class="flex justify-between items-center mb-4">
-                                <div class="text-gray-400">
-                                    <div class="text-sm">Volume</div>
-                                    <div class="font-semibold text-white">$25,420</div>
-                                </div>
-                                <div class="text-right">
-                                    <div class="text-sm text-gray-400">Yes Odds</div>
-                                    <div class="font-semibold text-green-400">1.85x</div>
-                                </div>
-                            </div>
-                            <button class="w-full py-2 bg-x-blue/10 text-x-blue rounded-md hover:bg-x-blue/20 transition">
-                                View Market
-                            </button>
-                        </div>
-
-                        <!-- More market cards... -->
-                    </div>
-
-                    <div class="text-center mt-12">
-                        <button class="px-8 py-3 bg-x-black border border-gray-800 rounded-md hover:bg-x-black/50">
-                            View More Markets
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Create Markets Section -->
-            <section class="py-20 bg-gradient-to-b from-x-black to-x-dark">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12">
-                        <h2 class="text-3xl font-bold mb-4">Ready to Create Your Own Markets?</h2>
-                        <p class="text-gray-400 max-w-2xl mx-auto">
-                            Turn your predictions into profitable opportunities. Market creators earn 50% of all platform fees - no betting required.
-                        </p>
-                    </div>
-
-                    <div class="bg-x-black/50 rounded-xl p-8 max-w-3xl mx-auto border border-gray-800">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div class="text-center p-6 bg-x-blue/5 rounded-lg border border-x-blue/20">
-                                <h3 class="text-2xl font-bold text-x-blue mb-2">Market Creator</h3>
-                                <p class="text-gray-400 mb-4">Earn 50% of platform fees</p>
-                                <div class="text-4xl font-bold text-x-blue">2.5%</div>
-                                <p class="text-gray-400 mt-2">of total betting volume</p>
-                            </div>
-                            <div class="text-center p-6 bg-green-500/5 rounded-lg border border-green-500/20">
-                                <h3 class="text-2xl font-bold text-green-400 mb-2">Example Earnings</h3>
-                                <p class="text-gray-400 mb-4">Per $1000 betting volume</p>
-                                <div class="text-4xl font-bold text-green-400">$25</div>
-                                <p class="text-gray-400 mt-2">passive income</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Trust Section -->
-            <section class="py-20 bg-x-black">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div class="text-center">
-                            <div class="bg-x-blue/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <i class="fas fa-shield-alt text-x-blue text-2xl"></i>
                             </div>
-                            <h3 class="text-xl font-semibold mb-2">Secure Payments</h3>
-                            <p class="text-gray-400">Protected by Stripe</p>
+                            <h3 class="text-xl font-semibold mb-2">Secure & Simple</h3>
+                            <p class="text-gray-400">One-click installation, protected by Stripe</p>
                         </div>
-                        <div class="text-center">
-                            <div class="bg-x-blue/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-balance-scale text-x-blue text-2xl"></i>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Social Proof -->
+            <section class="py-20 bg-x-black">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold mb-4">Early Supporters Love It</h2>
+                        <p class="text-gray-400">Join thousands waiting to revolutionize X predictions</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-x-dark rounded-xl p-6 border border-gray-800">
+                            <div class="flex items-center mb-4">
+                                <img src="https://placehold.co/40x40" alt="User" class="w-10 h-10 rounded-full">
+                                <div class="ml-3">
+                                    <div class="font-medium">@cryptotrader</div>
+                                    <div class="text-gray-400 text-sm">Crypto Analyst</div>
+                                </div>
                             </div>
-                            <h3 class="text-xl font-semibold mb-2">Fair Betting</h3>
-                            <p class="text-gray-400">Transparent odds & rules</p>
+                            <p class="text-gray-300">"Finally, a way to put money where my predictions are! Can't wait to create markets for crypto price targets."</p>
                         </div>
-                        <div class="text-center">
-                            <div class="bg-x-blue/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-user-shield text-x-blue text-2xl"></i>
+                        <div class="bg-x-dark rounded-xl p-6 border border-gray-800">
+                            <div class="flex items-center mb-4">
+                                <img src="https://placehold.co/40x40" alt="User" class="w-10 h-10 rounded-full">
+                                <div class="ml-3">
+                                    <div class="font-medium">@techreporter</div>
+                                    <div class="text-gray-400 text-sm">Tech Journalist</div>
+                                </div>
                             </div>
-                            <h3 class="text-xl font-semibold mb-2">Privacy First</h3>
-                            <p class="text-gray-400">No crypto required</p>
+                            <p class="text-gray-300">"This is exactly what X needs - a way to validate predictions and reward accuracy. Game changer!"</p>
+                        </div>
+                        <div class="bg-x-dark rounded-xl p-6 border border-gray-800">
+                            <div class="flex items-center mb-4">
+                                <img src="https://placehold.co/40x40" alt="User" class="w-10 h-10 rounded-full">
+                                <div class="ml-3">
+                                    <div class="font-medium">@sportsbetter</div>
+                                    <div class="text-gray-400 text-sm">Sports Enthusiast</div>
+                                </div>
+                            </div>
+                            <p class="text-gray-300">"Love the idea of creating markets for sports predictions. The UI looks clean and intuitive!"</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- Final CTA -->
-            <section class="py-20 bg-x-blue/10">
+            <section class="py-20 bg-gradient-to-b from-x-dark to-x-black">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 class="text-3xl font-bold mb-8">Don't Miss the Next Big Prediction</h2>
-                    <a href="#" class="inline-flex items-center px-8 py-4 text-lg font-medium rounded-md text-black bg-white hover:bg-gray-100">
-                        <i class="fab fa-chrome mr-2"></i>
-                        Add to Chrome - Free
-                    </a>
-                    <p class="mt-4 text-gray-400">Free to install • 100K+ users • 4.8★ rating</p>
+                    <h2 class="text-3xl font-bold mb-8">Be the First to Predict</h2>
+                    
+                    <!-- Waitlist Form (Duplicated) -->
+                    <form id="waitlistForm2" class="max-w-md mx-auto mb-8">
+                        <div class="flex gap-2">
+                            <input type="email" placeholder="Enter your email" class="flex-grow px-4 py-3 rounded-lg bg-x-dark border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-x-blue">
+                            <button type="submit" class="px-6 py-3 bg-success hover:bg-success/90 text-white font-medium rounded-lg transition-colors">
+                                Join Waitlist
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Share Buttons -->
+                    <div class="flex justify-center space-x-4 mb-8">
+                        <a href="#" class="p-3 bg-x-dark rounded-full hover:bg-x-dark/80 transition-colors">
+                            <i class="fab fa-twitter text-x-blue"></i>
+                        </a>
+                        <a href="#" class="p-3 bg-x-dark rounded-full hover:bg-x-dark/80 transition-colors">
+                            <i class="fab fa-whatsapp text-green-500"></i>
+                        </a>
+                        <a href="#" class="p-3 bg-x-dark rounded-full hover:bg-x-dark/80 transition-colors">
+                            <i class="fab fa-telegram text-blue-500"></i>
+                        </a>
+                    </div>
+
+                    <p class="text-gray-400">100% free • Early access • No spam</p>
                 </div>
             </section>
         </main>
 
         <!-- Footer -->
-        <footer class="bg-x-black text-gray-400 py-12">
+        <footer class="bg-x-dark border-t border-gray-800 py-8">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row justify-between items-center">
-                    <div class="mb-8 md:mb-0">
-                        <span class="text-2xl font-bold text-white">PostBet</span>
-                        <p class="mt-2">© 2024 PostBet. All rights reserved.</p>
+                    <div class="mb-4 md:mb-0">
+                        <span class="text-2xl font-bold gradient-text">PostBet</span>
+                        <p class="text-gray-400 text-sm mt-2">© 2024 PostBet. All rights reserved.</p>
                     </div>
                     <div class="flex space-x-6">
-                        <a href="#" class="hover:text-white">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
                             <i class="fab fa-twitter text-xl"></i>
                         </a>
-                        <a href="#" class="hover:text-white">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
                             <i class="fab fa-github text-xl"></i>
                         </a>
-                        <a href="#" class="hover:text-white">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
                             <i class="fas fa-envelope text-xl"></i>
                         </a>
                     </div>
                 </div>
             </div>
         </footer>
-    </header>
+    </div>
+
+    <script>
+        // Simple form validation
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = e.target.querySelector('input[type="email"]').value;
+                if (!email || !email.includes('@')) {
+                    alert('Please enter a valid email address');
+                    return;
+                }
+                // TODO: Add API integration
+                alert('Thanks for joining the waitlist! We\'ll be in touch soon.');
+            });
+        });
+
+        // Fake counter animation
+        let count = 2471;
+        setInterval(() => {
+            if (Math.random() > 0.7) {
+                count++;
+                document.getElementById('waitlistCount').textContent = count.toLocaleString();
+            }
+        }, 3000);
+    </script>
 </body>
+</html> 
 </html> 

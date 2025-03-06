@@ -60,11 +60,35 @@
         .mockup-hover:hover {
             transform: scale(1.02);
         }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .accordion-content.open {
+            max-height: 500px;
+        }
     </style>
 </head>
 <body class="bg-x-black text-white font-inter">
     <div class="min-h-screen flex flex-col">
-        <nav class="bg-x-dark/50 backdrop-blur-md border-b border-gray-800">
+        <nav class="bg-x-dark/50 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                 <div class="flex justify-between items-center">
                     <div class="flex items-center">
@@ -84,7 +108,7 @@
             <section class="py-20">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center max-w-3xl mx-auto">
-                        <h1 class="text-5xl font-extrabold tracking-tight sm:text-6xl mb-8">
+                        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight sm:text-6xl mb-8">
                             Place Bets on Any <span class="x-post-gradient">X Post</span>
                         </h1>
                         <p class="text-xl text-gray-400 mb-12">
@@ -93,7 +117,7 @@
 
                         <!-- Waitlist Button -->
                         <div class="max-w-md mx-auto mb-6">
-                            <a href="https://tally.so/r/3xl9Jy" target="_blank" class="w-full inline-block px-6 py-3 bg-success hover:bg-success/90 text-white font-medium rounded-lg transition-colors text-center">
+                            <a href="https://tally.so/r/3xl9Jy" target="_blank" class="w-full inline-block px-6 py-3 bg-success hover:bg-success/90 text-white font-medium rounded-lg transition-colors text-center pulse-animation">
                                 Join Waitlist
                             </a>
                         </div>
@@ -102,20 +126,20 @@
 
                     <!-- Product Preview -->
                     <div class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="relative mockup-hover">
-                            <img src="https://placehold.co/600x400" alt="Betting Interface" class="rounded-xl shadow-2xl border border-gray-800">
+                        <div class="relative mockup-hover float-animation" style="animation-delay: 0s;">
+                            <img src="https://i.imgur.com/JKgLeVY.png" alt="Betting Interface" class="rounded-xl shadow-2xl border border-gray-800 w-full h-auto">
                             <div class="absolute inset-0 bg-gradient-to-t from-x-black/80 to-transparent rounded-xl flex items-end p-6">
                                 <p class="text-lg font-medium">Bet on viral predictions</p>
                             </div>
                         </div>
-                        <div class="relative mockup-hover">
-                            <img src="https://placehold.co/600x400" alt="Market Creation" class="rounded-xl shadow-2xl border border-gray-800">
+                        <div class="relative mockup-hover float-animation" style="animation-delay: 0.5s;">
+                            <img src="https://i.imgur.com/8XcVt9R.png" alt="Market Creation" class="rounded-xl shadow-2xl border border-gray-800 w-full h-auto">
                             <div class="absolute inset-0 bg-gradient-to-t from-x-black/80 to-transparent rounded-xl flex items-end p-6">
                                 <p class="text-lg font-medium">Create your own markets</p>
                             </div>
                         </div>
-                        <div class="relative mockup-hover lg:col-span-1 md:col-span-2 lg:col-span-1">
-                            <img src="https://placehold.co/600x400" alt="Winning Payout" class="rounded-xl shadow-2xl border border-gray-800">
+                        <div class="relative mockup-hover float-animation lg:col-span-1 md:col-span-2 lg:col-span-1" style="animation-delay: 1s;">
+                            <img src="https://i.imgur.com/pYVS6Xm.png" alt="Winning Payout" class="rounded-xl shadow-2xl border border-gray-800 w-full h-auto">
                             <div class="absolute inset-0 bg-gradient-to-t from-x-black/80 to-transparent rounded-xl flex items-end p-6">
                                 <p class="text-lg font-medium">Win when you're right</p>
                             </div>
@@ -124,25 +148,61 @@
                 </div>
             </section>
 
-            <!-- Features -->
+            <!-- How It Works -->
             <section class="py-20 bg-x-dark">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl font-bold mb-4">How PostBET Works</h2>
+                        <p class="text-gray-400 max-w-2xl mx-auto">Our Chrome extension seamlessly integrates with X, allowing you to bet on predictions with just a few clicks</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-x-black/50 p-8 rounded-xl border border-gray-800 fade-in">
+                            <div class="w-12 h-12 bg-x-blue/20 rounded-full flex items-center justify-center mb-6 text-x-blue">
+                                <span class="text-xl font-bold">1</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">Install the Extension</h3>
+                            <p class="text-gray-400">Download our Chrome extension with one click and connect your account</p>
+                        </div>
+                        
+                        <div class="bg-x-black/50 p-8 rounded-xl border border-gray-800 fade-in">
+                            <div class="w-12 h-12 bg-x-blue/20 rounded-full flex items-center justify-center mb-6 text-x-blue">
+                                <span class="text-xl font-bold">2</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">Find or Create Markets</h3>
+                            <p class="text-gray-400">Browse existing prediction markets or create your own on any X post</p>
+                        </div>
+                        
+                        <div class="bg-x-black/50 p-8 rounded-xl border border-gray-800 fade-in">
+                            <div class="w-12 h-12 bg-x-blue/20 rounded-full flex items-center justify-center mb-6 text-x-blue">
+                                <span class="text-xl font-bold">3</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">Place Bets & Win</h3>
+                            <p class="text-gray-400">Bet on outcomes you believe in and collect winnings when you're right</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features -->
+            <section class="py-20 bg-x-black">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                        <div class="text-center">
+                        <div class="text-center fade-in">
                             <div class="bg-x-blue/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-x-blue/20">
                                 <i class="fas fa-chart-line text-x-blue text-2xl"></i>
                             </div>
                             <h3 class="text-xl font-semibold mb-2">Bet on Anything</h3>
                             <p class="text-gray-400">Place bets on any X prediction or create your own markets</p>
                         </div>
-                        <div class="text-center">
+                        <div class="text-center fade-in">
                             <div class="bg-x-blue/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-x-blue/20">
                                 <i class="fas fa-money-bill-wave text-x-blue text-2xl"></i>
                             </div>
                             <h3 class="text-xl font-semibold mb-2">Earn Rewards</h3>
                             <p class="text-gray-400">Get paid when you win & earn fees from your markets</p>
                         </div>
-                        <div class="text-center">
+                        <div class="text-center fade-in">
                             <div class="bg-x-blue/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-x-blue/20">
                                 <i class="fas fa-shield-alt text-x-blue text-2xl"></i>
                             </div>
@@ -154,7 +214,7 @@
             </section>
 
             <!-- Social Proof -->
-            <section class="py-20 bg-x-black">
+            <section class="py-20 bg-x-dark">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center mb-12">
                         <h2 class="text-3xl font-bold mb-4">Early Supporters Love It</h2>
@@ -162,9 +222,9 @@
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div class="bg-x-dark rounded-xl p-6 border border-gray-800">
+                        <div class="bg-x-black rounded-xl p-6 border border-gray-800 fade-in">
                             <div class="flex items-center mb-4">
-                                <img src="https://placehold.co/40x40" alt="User" class="w-10 h-10 rounded-full">
+                                <img src="https://i.imgur.com/JdMBWwB.png" alt="User" class="w-10 h-10 rounded-full">
                                 <div class="ml-3">
                                     <div class="font-medium">@cryptotrader</div>
                                     <div class="text-gray-400 text-sm">Crypto Analyst</div>
@@ -172,9 +232,9 @@
                             </div>
                             <p class="text-gray-300">"Finally, a way to put money where my predictions are! Can't wait to create markets for crypto price targets."</p>
                         </div>
-                        <div class="bg-x-dark rounded-xl p-6 border border-gray-800">
+                        <div class="bg-x-black rounded-xl p-6 border border-gray-800 fade-in">
                             <div class="flex items-center mb-4">
-                                <img src="https://placehold.co/40x40" alt="User" class="w-10 h-10 rounded-full">
+                                <img src="https://i.imgur.com/8bZUjLM.png" alt="User" class="w-10 h-10 rounded-full">
                                 <div class="ml-3">
                                     <div class="font-medium">@techreporter</div>
                                     <div class="text-gray-400 text-sm">Tech Journalist</div>
@@ -182,15 +242,92 @@
                             </div>
                             <p class="text-gray-300">"This is exactly what X needs - a way to validate predictions and reward accuracy. Game changer!"</p>
                         </div>
-                        <div class="bg-x-dark rounded-xl p-6 border border-gray-800">
+                        <div class="bg-x-black rounded-xl p-6 border border-gray-800 fade-in">
                             <div class="flex items-center mb-4">
-                                <img src="https://placehold.co/40x40" alt="User" class="w-10 h-10 rounded-full">
+                                <img src="https://i.imgur.com/QnFUAqZ.png" alt="User" class="w-10 h-10 rounded-full">
                                 <div class="ml-3">
                                     <div class="font-medium">@sportsbetter</div>
                                     <div class="text-gray-400 text-sm">Sports Enthusiast</div>
                                 </div>
                             </div>
                             <p class="text-gray-300">"Love the idea of creating markets for sports predictions. The UI looks clean and intuitive!"</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="py-20 bg-x-black">
+                <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+                        <p class="text-gray-400">Everything you need to know about PostBET</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- FAQ Item 1 -->
+                        <div class="border border-gray-800 rounded-lg overflow-hidden">
+                            <button class="faq-toggle w-full px-6 py-4 text-left bg-x-dark hover:bg-x-dark/80 transition-colors flex justify-between items-center">
+                                <span class="font-medium">How does PostBET work?</span>
+                                <i class="fas fa-chevron-down text-gray-400 transition-transform"></i>
+                            </button>
+                            <div class="accordion-content bg-x-black/50 px-6 py-0">
+                                <div class="py-4 text-gray-400">
+                                    PostBET is a Chrome extension that integrates with X (formerly Twitter). It allows you to place bets on predictions made in posts, or create your own prediction markets. When the outcome is determined, winners receive their payouts automatically.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Item 2 -->
+                        <div class="border border-gray-800 rounded-lg overflow-hidden">
+                            <button class="faq-toggle w-full px-6 py-4 text-left bg-x-dark hover:bg-x-dark/80 transition-colors flex justify-between items-center">
+                                <span class="font-medium">Is PostBET free to use?</span>
+                                <i class="fas fa-chevron-down text-gray-400 transition-transform"></i>
+                            </button>
+                            <div class="accordion-content bg-x-black/50 px-6 py-0">
+                                <div class="py-4 text-gray-400">
+                                    Yes, PostBET is free to install and use. We charge a small fee (2%) on winnings to maintain the platform. Early waitlist members will receive special benefits including reduced fees.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Item 3 -->
+                        <div class="border border-gray-800 rounded-lg overflow-hidden">
+                            <button class="faq-toggle w-full px-6 py-4 text-left bg-x-dark hover:bg-x-dark/80 transition-colors flex justify-between items-center">
+                                <span class="font-medium">When will PostBET launch?</span>
+                                <i class="fas fa-chevron-down text-gray-400 transition-transform"></i>
+                            </button>
+                            <div class="accordion-content bg-x-black/50 px-6 py-0">
+                                <div class="py-4 text-gray-400">
+                                    We're currently in private beta. Join the waitlist to be among the first to access PostBET when we launch publicly. Waitlist members will be invited in batches starting Q2 2024.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Item 4 -->
+                        <div class="border border-gray-800 rounded-lg overflow-hidden">
+                            <button class="faq-toggle w-full px-6 py-4 text-left bg-x-dark hover:bg-x-dark/80 transition-colors flex justify-between items-center">
+                                <span class="font-medium">Is PostBET available worldwide?</span>
+                                <i class="fas fa-chevron-down text-gray-400 transition-transform"></i>
+                            </button>
+                            <div class="accordion-content bg-x-black/50 px-6 py-0">
+                                <div class="py-4 text-gray-400">
+                                    PostBET will be available in most countries. However, due to regulatory requirements, some regions may have limited functionality. We're working to expand our coverage as quickly as possible.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Item 5 -->
+                        <div class="border border-gray-800 rounded-lg overflow-hidden">
+                            <button class="faq-toggle w-full px-6 py-4 text-left bg-x-dark hover:bg-x-dark/80 transition-colors flex justify-between items-center">
+                                <span class="font-medium">How are disputes resolved?</span>
+                                <i class="fas fa-chevron-down text-gray-400 transition-transform"></i>
+                            </button>
+                            <div class="accordion-content bg-x-black/50 px-6 py-0">
+                                <div class="py-4 text-gray-400">
+                                    PostBET uses a combination of automated verification and community voting to resolve disputes. For complex cases, our team will make the final determination based on publicly available information.
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -203,7 +340,7 @@
                     
                     <!-- Waitlist Button (Duplicated) -->
                     <div class="max-w-md mx-auto mb-8">
-                        <a href="https://tally.so/r/3xl9Jy" target="_blank" class="w-full inline-block px-6 py-3 bg-success hover:bg-success/90 text-white font-medium rounded-lg transition-colors text-center">
+                        <a href="https://tally.so/r/3xl9Jy" target="_blank" class="w-full inline-block px-6 py-3 bg-success hover:bg-success/90 text-white font-medium rounded-lg transition-colors text-center pulse-animation">
                             Join Waitlist
                         </a>
                     </div>
@@ -250,15 +387,66 @@
         </footer>
     </div>
 
+    <!-- JavaScript for animations and interactions -->
     <script>
-        // Simplified counter animation (removed form handling since Tally handles it)
-        let count = 2471;
-        setInterval(() => {
-            if (Math.random() > 0.7) {
-                count++;
-                document.getElementById('waitlistCount').textContent = count.toLocaleString();
-            }
-        }, 3000);
+        // Fade-in animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // FAQ Accordion
+            const faqToggles = document.querySelectorAll('.faq-toggle');
+            
+            faqToggles.forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const content = toggle.nextElementSibling;
+                    const icon = toggle.querySelector('i');
+                    
+                    // Toggle the current accordion
+                    content.classList.toggle('open');
+                    icon.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0)';
+                    
+                    // Close other accordions
+                    faqToggles.forEach(otherToggle => {
+                        if (otherToggle !== toggle) {
+                            const otherContent = otherToggle.nextElementSibling;
+                            const otherIcon = otherToggle.querySelector('i');
+                            
+                            otherContent.classList.remove('open');
+                            otherIcon.style.transform = 'rotate(0)';
+                        }
+                    });
+                });
+            });
+            
+            // Increment counter animation
+            const waitlistCount = document.getElementById('waitlistCount');
+            const targetCount = parseInt(waitlistCount.textContent.replace(/,/g, ''));
+            let currentCount = 0;
+            const duration = 2000; // 2 seconds
+            const interval = 20; // Update every 20ms
+            const increment = targetCount / (duration / interval);
+            
+            const counter = setInterval(() => {
+                currentCount += increment;
+                if (currentCount >= targetCount) {
+                    currentCount = targetCount;
+                    clearInterval(counter);
+                }
+                waitlistCount.textContent = Math.floor(currentCount).toLocaleString();
+            }, interval);
+        });
     </script>
 </body>
 </html> 

@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thanks for Joining PostBet!</title>
+    <title>Thanks for Joining PostBET!</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -19,7 +19,7 @@
                         'success': '#00BA7C'
                     },
                     fontFamily: {
-                        'inter': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        'golos': ['Golos Text', 'system-ui', '-apple-system', 'sans-serif'],
                     },
                 }
             }
@@ -27,32 +27,84 @@
     </script>
     <style>
         .gradient-text {
-            background: linear-gradient(45deg, #1DA1F2, #ffffff);
+            background: linear-gradient(45deg, #00BA7C, #1DA1F2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        .countdown-timer {
+            background: rgba(0, 186, 124, 0.1);
+            border: 1px solid #00BA7C;
+            border-radius: 8px;
+        }
+        .countdown-item {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 6px;
+        }
     </style>
 </head>
-<body class="bg-x-black text-white font-inter">
+<body class="bg-x-black text-white font-golos">
     <div class="min-h-screen flex flex-col items-center justify-center p-4">
         <div class="text-center max-w-xl">
             <div class="text-6xl mb-6">🎉</div>
-            <h1 class="text-4xl font-bold mb-4">Welcome to the <span class="gradient-text">PostBet</span> Waitlist!</h1>
-            <p class="text-xl text-gray-400 mb-8">
-                You're now on the list for early access. We'll notify you as soon as we launch!
+            <h1 class="text-4xl font-bold mb-4">You're In! <span class="gradient-text">Welcome to PostBET</span></h1>
+            <p class="text-xl text-gray-400 mb-6">
+                You're now on the waitlist for early access. Get ready to start earning on August 1, 2024!
             </p>
+            
+            <!-- Countdown Timer -->
+            <div class="countdown-timer p-4 mb-8 max-w-md mx-auto">
+                <p class="text-sm text-gray-400 mb-2">Launching in</p>
+                <div class="flex justify-between">
+                    <div class="text-center px-3 py-2 countdown-item">
+                        <div class="text-2xl font-bold text-white">86</div>
+                        <div class="text-xs text-gray-400">Days</div>
+                    </div>
+                    <div class="text-center px-3 py-2 countdown-item">
+                        <div class="text-2xl font-bold text-white">12</div>
+                        <div class="text-xs text-gray-400">Hours</div>
+                    </div>
+                    <div class="text-center px-3 py-2 countdown-item">
+                        <div class="text-2xl font-bold text-white">45</div>
+                        <div class="text-xs text-gray-400">Minutes</div>
+                    </div>
+                    <div class="text-center px-3 py-2 countdown-item">
+                        <div class="text-2xl font-bold text-white">22</div>
+                        <div class="text-xs text-gray-400">Seconds</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bonus Info -->
+            <div class="bg-success/10 rounded-xl p-6 mb-8 border border-success/20">
+                <h2 class="text-xl font-semibold mb-2">Your Early Access Perks</h2>
+                <ul class="text-left space-y-2 mb-4">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-success mt-1 mr-2"></i>
+                        <span>$10 bonus on your first deposit</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-success mt-1 mr-2"></i>
+                        <span>Exclusive access to limited-time markets</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-success mt-1 mr-2"></i>
+                        <span>Earn 1% commission on markets you create</span>
+                    </li>
+                </ul>
+            </div>
             
             <!-- Share Section -->
             <div class="bg-x-dark rounded-xl p-8 mb-8">
-                <h2 class="text-xl font-semibold mb-4">Share with friends</h2>
+                <h2 class="text-xl font-semibold mb-4">Share & earn referral points</h2>
+                <p class="text-gray-400 mb-4">Invite friends to join the waitlist and get priority access!</p>
                 <div class="flex justify-center space-x-4">
-                    <a href="https://twitter.com/intent/tweet?text=Just%20joined%20the%20waitlist%20for%20%40PostBet%20-%20the%20first%20Chrome%20extension%20for%20betting%20on%20X%20predictions!%20Join%20me%3A%20https%3A%2F%2Fpostbet.xyz" target="_blank" class="p-3 bg-x-blue/10 rounded-full hover:bg-x-blue/20 transition-colors">
+                    <a href="https://twitter.com/intent/tweet?text=I%20just%20joined%20the%20waitlist%20for%20%40PostBet%20-%20the%20Chrome%20extension%20that%20lets%20you%20earn%20money%20betting%20on%20X%20predictions!%20Launching%20August%201.%20Join%20me%3A%20https%3A%2F%2Fpostbet.xyz" target="_blank" class="p-3 bg-x-blue/10 rounded-full hover:bg-x-blue/20 transition-colors">
                         <i class="fab fa-twitter text-x-blue"></i>
                     </a>
-                    <a href="https://wa.me/?text=Just%20joined%20the%20waitlist%20for%20PostBet%20-%20the%20first%20Chrome%20extension%20for%20betting%20on%20X%20predictions!%20Join%20me%3A%20https%3A%2F%2Fpostbet.xyz" target="_blank" class="p-3 bg-green-500/10 rounded-full hover:bg-green-500/20 transition-colors">
+                    <a href="https://wa.me/?text=I%20just%20joined%20the%20waitlist%20for%20PostBet%20-%20the%20Chrome%20extension%20that%20lets%20you%20earn%20money%20betting%20on%20X%20predictions!%20Launching%20August%201.%20Join%20me%3A%20https%3A%2F%2Fpostbet.xyz" target="_blank" class="p-3 bg-green-500/10 rounded-full hover:bg-green-500/20 transition-colors">
                         <i class="fab fa-whatsapp text-green-500"></i>
                     </a>
-                    <a href="https://t.me/share/url?url=https%3A%2F%2Fpostbet.xyz&text=Just%20joined%20the%20waitlist%20for%20PostBet%20-%20the%20first%20Chrome%20extension%20for%20betting%20on%20X%20predictions!" target="_blank" class="p-3 bg-blue-500/10 rounded-full hover:bg-blue-500/20 transition-colors">
+                    <a href="https://t.me/share/url?url=https%3A%2F%2Fpostbet.xyz&text=I%20just%20joined%20the%20waitlist%20for%20PostBet%20-%20the%20Chrome%20extension%20that%20lets%20you%20earn%20money%20betting%20on%20X%20predictions!%20Launching%20August%201." target="_blank" class="p-3 bg-blue-500/10 rounded-full hover:bg-blue-500/20 transition-colors">
                         <i class="fab fa-telegram text-blue-500"></i>
                     </a>
                 </div>

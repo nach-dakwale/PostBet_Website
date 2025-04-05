@@ -119,7 +119,8 @@
     <script>
         // Countdown timer to August 1, 2024
         function updateCountdown() {
-            const launchDate = new Date("August 1, 2024 00:00:00").getTime();
+            // Use a more explicit date format with year, month (0-based), day, hours, minutes
+            const launchDate = new Date(2024, 7, 1, 0, 0, 0).getTime(); // August is month 7 (0-based)
             const now = new Date().getTime();
             const timeRemaining = launchDate - now;
             

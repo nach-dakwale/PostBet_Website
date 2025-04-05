@@ -111,6 +111,25 @@
             background: rgba(0, 0, 0, 0.3);
             border-radius: 6px;
         }
+        .option.selected {
+            background-color: rgba(0, 186, 124, 0.2) !important;
+            border: 1px solid #00BA7C;
+        }
+
+        .option:hover {
+            background-color: rgba(0, 186, 124, 0.2) !important;
+            border-color: #00BA7C;
+        }
+
+        button.option {
+            background-color: #192734;
+            transition: all 0.2s ease;
+        }
+
+        .option.selected:hover {
+            background-color: rgba(0, 186, 124, 0.2) !important;
+            border-color: #00BA7C;
+        }
     </style>
 </head>
 <body class="bg-x-black text-white font-golos">
@@ -236,8 +255,8 @@
                                     </div>
                                     <div class="text-gray-400 mb-4">2d 23h left</div>
                                     <div class="space-y-3">
-                                        <button class="w-full py-4 bg-[#192734] hover:bg-[#192734]/80 rounded-lg text-left px-6 font-medium">Yes</button>
-                                        <button class="w-full py-4 bg-[#192734] hover:bg-[#192734]/80 rounded-lg text-left px-6 font-medium">No</button>
+                                        <button class="w-full py-4 bg-[#192734] hover:bg-[#192734]/80 rounded-lg text-left px-6 font-medium option border border-gray-700 transition-all duration-200">Yes</button>
+                                        <button class="w-full py-4 bg-[#192734] hover:bg-[#192734]/80 rounded-lg text-left px-6 font-medium option border border-gray-700 transition-all duration-200">No</button>
                                     </div>
                                     <div class="mt-6">
                                         <button class="w-full py-3 bg-success hover:bg-success/90 rounded-lg font-medium">Place Bet</button>
@@ -263,9 +282,6 @@
                                 <div class="p-6">
                                     <div class="flex justify-between items-start mb-4">
                                         <h3 class="text-xl font-bold">Create Market</h3>
-                                        <div class="text-right">
-                                            <div class="text-gray-400 text-sm">Question</div>
-                                        </div>
                                     </div>
                                     <div class="space-y-3">
                                         <input type="text" class="w-full bg-[#192734] border border-gray-700 rounded-lg py-2 px-3 text-white" placeholder="Will Apple announce new MacBook?">
@@ -305,8 +321,8 @@
                                     </div>
                                     <div class="text-gray-400 mb-4">4d 12h left</div>
                                     <div class="space-y-3">
-                                        <button class="w-full py-4 bg-[#192734] hover:bg-[#192734]/80 rounded-lg text-left px-6 font-medium">True</button>
-                                        <button class="w-full py-4 bg-[#192734] hover:bg-[#192734]/80 rounded-lg text-left px-6 font-medium">False</button>
+                                        <button class="w-full py-4 bg-[#192734] hover:bg-[#192734]/80 rounded-lg text-left px-6 font-medium option border border-gray-700 transition-all duration-200">True</button>
+                                        <button class="w-full py-4 bg-[#192734] hover:bg-[#192734]/80 rounded-lg text-left px-6 font-medium option border border-gray-700 transition-all duration-200">False</button>
                                     </div>
                                     <div class="mt-6">
                                         <button class="w-full py-3 bg-success hover:bg-success/90 rounded-lg font-medium">Place Bet</button>
@@ -480,7 +496,7 @@
                                 <i class="fas fa-plus text-gray-400"></i>
                             </button>
                             <div class="accordion-content px-6 pb-6">
-                                <p class="text-gray-400">PostBET is officially launching on August 1, 2025! Get on the waitlist now for early access and exclusive bonuses for early adopters.</p>
+                                <p class="text-gray-400">PostBET is officially launching on August 1, 2024! Get on the waitlist now for early access and exclusive bonuses for early adopters.</p>
                             </div>
                         </div>
                         
@@ -524,11 +540,11 @@
                         <div class="p-8 md:p-12 text-center">
                             <h2 class="text-3xl md:text-4xl font-bold mb-4">Get Early Access Before Launch</h2>
                             <p class="text-xl text-gray-400 mb-6 max-w-2xl mx-auto">
-                                Join the waitlist now to be among the first to start betting on X posts when we launch on August 1st, 2025.
+                                Join the waitlist now to be among the first to start betting on X posts when we launch on August 1st.
                             </p>
                             <div class="bg-success/10 rounded-lg p-4 mb-8 max-w-md mx-auto">
                                 <p class="text-white text-lg">
-                                    <i class="fas fa-gift mr-2 text-success"></i> <span class="font-bold">500 randomly selected users</span> will receive <span class="text-success font-bold">$10 free</span> on August 1st, 2025!
+                                    <i class="fas fa-gift mr-2 text-success"></i> <span class="font-bold">500 randomly selected users</span> will receive <span class="text-success font-bold">$10 free</span> on August 1st!
                                 </p>
                             </div>
                             <div class="max-w-md mx-auto mb-6">
@@ -600,57 +616,28 @@
             // Waitlist count - only increase, never decrease
             const waitlistCount = document.getElementById('waitlistCount');
             const baseCount = 1106; // Starting number
-            const lastHourJoined = document.getElementById('lastHourJoined');
-            let lastHourCount = 47; // Starting number for last hour
             
-            // Update counts more frequently (every 5 seconds)
             setInterval(() => {
-                // Always update the last hour count
-                const hourlyChange = Math.floor(Math.random() * 3) - 1; // -1, 0, or 1
-                lastHourCount = Math.max(20, Math.min(75, lastHourCount + hourlyChange));
-                lastHourJoined.textContent = lastHourCount;
-
-                // Update waitlist count less frequently
                 if (Math.random() > 0.7) {
                     const increment = Math.floor(Math.random() * 5) + 1;
                     const currentValue = parseInt(waitlistCount.textContent.replace(/,/g, ''));
                     const newCount = currentValue + increment;
                     waitlistCount.textContent = newCount.toLocaleString();
                 }
-            }, 5000); // Changed from 30000 to 5000 ms
+            }, 30000);
 
-            // Set the date we're counting down to
-            var countDownDate = new Date("Aug 1, 2025 00:00:00").getTime();
-
-            // Update the count down every 1 second
-            var x = setInterval(function() {
-                // Get today's date and time
-                var now = new Date().getTime();
-
-                // Find the distance between now and the count down date
-                var distance = countDownDate - now;
-
-                // Time calculations for days, hours, minutes and seconds
-                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                // Display the result in each element
-                if (distance > 0) {
-                    document.getElementById("days").textContent = String(days).padStart(2, '0');
-                    document.getElementById("hours").textContent = String(hours).padStart(2, '0');
-                    document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
-                    document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
-                } else {
-                    // If the count down is finished
-                    clearInterval(x);
-                    document.getElementById("days").textContent = "00";
-                    document.getElementById("hours").textContent = "00";
-                    document.getElementById("minutes").textContent = "00";
-                    document.getElementById("seconds").textContent = "00";
-                }
-            }, 1000);
+            // Add option selection functionality
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    // Get all options in the same market
+                    const market = this.closest('.space-y-3');
+                    market.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                });
+            });
         });
     </script>
 </body>

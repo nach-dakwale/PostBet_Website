@@ -150,19 +150,19 @@
                             <p class="text-sm text-gray-400 mb-2">Limited spots available for early access</p>
                             <div class="flex justify-between">
                                 <div class="text-center px-3 py-2 countdown-item">
-                                    <div class="text-2xl font-bold text-white">86</div>
+                                    <div id="days" class="text-2xl font-bold text-white">--</div>
                                     <div class="text-xs text-gray-400">Days</div>
                                 </div>
                                 <div class="text-center px-3 py-2 countdown-item">
-                                    <div class="text-2xl font-bold text-white">12</div>
+                                    <div id="hours" class="text-2xl font-bold text-white">--</div>
                                     <div class="text-xs text-gray-400">Hours</div>
                                 </div>
                                 <div class="text-center px-3 py-2 countdown-item">
-                                    <div class="text-2xl font-bold text-white">45</div>
+                                    <div id="minutes" class="text-2xl font-bold text-white">--</div>
                                     <div class="text-xs text-gray-400">Minutes</div>
                                 </div>
                                 <div class="text-center px-3 py-2 countdown-item">
-                                    <div class="text-2xl font-bold text-white">22</div>
+                                    <div id="seconds" class="text-2xl font-bold text-white">--</div>
                                     <div class="text-xs text-gray-400">Seconds</div>
                                 </div>
                             </div>
@@ -609,6 +609,36 @@
                     waitlistCount.textContent = newCount.toLocaleString();
                 }
             }, 30000);
+
+            // Countdown timer to August 1, 2024
+            function updateCountdown() {
+                const launchDate = new Date("August 1, 2024 00:00:00").getTime();
+                const now = new Date().getTime();
+                const timeRemaining = launchDate - now;
+                
+                if (timeRemaining > 0) {
+                    const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+                    
+                    document.getElementById("days").innerText = days;
+                    document.getElementById("hours").innerText = hours;
+                    document.getElementById("minutes").innerText = minutes;
+                    document.getElementById("seconds").innerText = seconds;
+                } else {
+                    document.getElementById("days").innerText = "0";
+                    document.getElementById("hours").innerText = "0";
+                    document.getElementById("minutes").innerText = "0";
+                    document.getElementById("seconds").innerText = "0";
+                }
+            }
+            
+            // Initial call to display the countdown immediately
+            updateCountdown();
+            
+            // Update the countdown every second
+            setInterval(updateCountdown, 1000);
         });
     </script>
 </body>

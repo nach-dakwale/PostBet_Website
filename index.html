@@ -136,7 +136,7 @@
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center max-w-3xl mx-auto">
                         <div class="bg-success/10 text-success text-sm rounded-full py-2 px-4 mb-6 inline-block">
-                            <i class="fas fa-rocket mr-2"></i> Launching August 1, 2024
+                            <i class="fas fa-rocket mr-2"></i> Launching August 1, 2025
                         </div>
                         <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight sm:text-6xl mb-6">
                             Bet Directly on <span class="x-post-gradient">X Posts</span>
@@ -181,7 +181,7 @@
                                 Get Early Access Now
                             </a>
                         </div>
-                        <p class="text-gray-400 text-sm">🔥 <span class="text-x-blue font-medium">47 people</span> joined in the last hour</p>
+                        <p class="text-gray-400 text-sm">🔥 <span class="text-x-blue font-medium"><span id="lastHourJoined">47</span> people</span> joined in the last hour</p>
                     </div>
 
                     <!-- Key Benefits -->
@@ -480,7 +480,7 @@
                                 <i class="fas fa-plus text-gray-400"></i>
                             </button>
                             <div class="accordion-content px-6 pb-6">
-                                <p class="text-gray-400">PostBET is officially launching on August 1, 2024! Get on the waitlist now for early access and exclusive bonuses for early adopters.</p>
+                                <p class="text-gray-400">PostBET is officially launching on August 1, 2025! Get on the waitlist now for early access and exclusive bonuses for early adopters.</p>
                             </div>
                         </div>
                         
@@ -524,11 +524,11 @@
                         <div class="p-8 md:p-12 text-center">
                             <h2 class="text-3xl md:text-4xl font-bold mb-4">Get Early Access Before Launch</h2>
                             <p class="text-xl text-gray-400 mb-6 max-w-2xl mx-auto">
-                                Join the waitlist now to be among the first to start betting on X posts when we launch on August 1st.
+                                Join the waitlist now to be among the first to start betting on X posts when we launch on August 1st, 2025.
                             </p>
                             <div class="bg-success/10 rounded-lg p-4 mb-8 max-w-md mx-auto">
                                 <p class="text-white text-lg">
-                                    <i class="fas fa-gift mr-2 text-success"></i> <span class="font-bold">500 randomly selected users</span> will receive <span class="text-success font-bold">$10 free</span> on August 1st!
+                                    <i class="fas fa-gift mr-2 text-success"></i> <span class="font-bold">500 randomly selected users</span> will receive <span class="text-success font-bold">$10 free</span> on August 1st, 2025!
                                 </p>
                             </div>
                             <div class="max-w-md mx-auto mb-6">
@@ -600,46 +600,57 @@
             // Waitlist count - only increase, never decrease
             const waitlistCount = document.getElementById('waitlistCount');
             const baseCount = 1106; // Starting number
+            const lastHourJoined = document.getElementById('lastHourJoined');
+            let lastHourCount = 47; // Starting number for last hour
             
+            // Update counts more frequently (every 5 seconds)
             setInterval(() => {
+                // Always update the last hour count
+                const hourlyChange = Math.floor(Math.random() * 3) - 1; // -1, 0, or 1
+                lastHourCount = Math.max(20, Math.min(75, lastHourCount + hourlyChange));
+                lastHourJoined.textContent = lastHourCount;
+
+                // Update waitlist count less frequently
                 if (Math.random() > 0.7) {
                     const increment = Math.floor(Math.random() * 5) + 1;
                     const currentValue = parseInt(waitlistCount.textContent.replace(/,/g, ''));
                     const newCount = currentValue + increment;
                     waitlistCount.textContent = newCount.toLocaleString();
                 }
-            }, 30000);
+            }, 5000); // Changed from 30000 to 5000 ms
 
-            // Countdown timer to August 1, 2024
-            function updateCountdown() {
-                // Use a more explicit date format with year, month (0-based), day, hours, minutes
-                const launchDate = new Date(2024, 7, 1, 0, 0, 0).getTime(); // August is month 7 (0-based)
-                const now = new Date().getTime();
-                const timeRemaining = launchDate - now;
-                
-                if (timeRemaining > 0) {
-                    const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-                    const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-                    const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-                    
-                    document.getElementById("days").innerText = days;
-                    document.getElementById("hours").innerText = hours;
-                    document.getElementById("minutes").innerText = minutes;
-                    document.getElementById("seconds").innerText = seconds;
+            // Set the date we're counting down to
+            var countDownDate = new Date("Aug 1, 2025 00:00:00").getTime();
+
+            // Update the count down every 1 second
+            var x = setInterval(function() {
+                // Get today's date and time
+                var now = new Date().getTime();
+
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result in each element
+                if (distance > 0) {
+                    document.getElementById("days").textContent = String(days).padStart(2, '0');
+                    document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+                    document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+                    document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
                 } else {
-                    document.getElementById("days").innerText = "0";
-                    document.getElementById("hours").innerText = "0";
-                    document.getElementById("minutes").innerText = "0";
-                    document.getElementById("seconds").innerText = "0";
+                    // If the count down is finished
+                    clearInterval(x);
+                    document.getElementById("days").textContent = "00";
+                    document.getElementById("hours").textContent = "00";
+                    document.getElementById("minutes").textContent = "00";
+                    document.getElementById("seconds").textContent = "00";
                 }
-            }
-            
-            // Initial call to display the countdown immediately
-            updateCountdown();
-            
-            // Update the countdown every second
-            setInterval(updateCountdown, 1000);
+            }, 1000);
         });
     </script>
 </body>
